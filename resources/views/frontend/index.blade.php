@@ -8,7 +8,7 @@
          @forelse ($categories as $c)
          <div class="col-3">
             <div class="card mt-3 mb-3">
-               <a href="{{url('/categories/cproducts/'.$c->id)}}">
+               <a href="{{url('/categories/cproducts/'.$c->name)}}">
                <img class="card-img-top" src="{{asset($c->image)}}" alt="Title" height='200px'/></a>
                <div class="card-body">
                   <h4 class="card-title">{{$c->name}}</h4>

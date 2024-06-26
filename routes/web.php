@@ -52,5 +52,8 @@ Route::prefix('/admin')->middleware(AdminMiddleware::class,'auth')->group(functi
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/',[FrontendController::class,'index']);
-Route::get('/categories/cproducts/{id?}',[FrontendController::class,'cproducts']);
+
+Route::controller(FrontendController::class)->group(function(){
+    Route::get('/','index');
+    Route::get('/categories/cproducts/{category?}','cproducts');
+});
