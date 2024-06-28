@@ -15,6 +15,9 @@
     <link rel="stylesheet" href="{{asset('css/bootstrap.css')}}" />
     <link rel="stylesheet" href="{{asset('css/custom.css')}}" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <link href="{{asset('exzoom/jquery.exzoom.css')}}" rel="stylesheet">
+
    @livewireStyles
 </head>
 <body>
@@ -26,9 +29,13 @@
     </div>
 
     @livewireScripts
-    
+
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+        <script src="{{asset('exzoom/jquery.exzoom.js')}}"></script>
    <script src="{{asset('js/bootstrap.js')}}"></script>
+
+   @stack('zoomscript')
 </body>
 </html>

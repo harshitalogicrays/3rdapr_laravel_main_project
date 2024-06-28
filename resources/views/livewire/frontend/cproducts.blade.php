@@ -19,9 +19,10 @@
                         Low to High
                     </label>
                 </div> --}}
-                <input type="radio" value="below1000" wire:model="priceInput"> >=100 and < 1000<br>
-                <input type="radio"  value="below2000" wire:model="priceInput"> >=1000 and < 2000<br>
-                <input type="radio"  value="below3000" wire:model="priceInput"> >=2000 and < 3000<br>
+                <input type="radio" value="below1000" wire:model="priceInput" 
+                wire:click="filterData('below1000')"> >=100 and < 1000<br>
+                <input type="radio"  value="below2000" wire:model="priceInput"   wire:click="filterData('below2000')"> >=1000 and < 2000<br>
+                <input type="radio"  value="below3000" wire:model="priceInput"   wire:click="filterData('below3000')"> >=2000 and < 3000<br>
         
             </div>
         </div>
@@ -37,8 +38,9 @@
                     @else
                     <label class="stock bg-danger">Out of Stock</label>
                     @endif
-                    
+                    <a href="{{url('/categories/viewproduct/'.$product->name) }}">
                     <img src="{{asset($product->productImages[0]->image)}}" height='200px' alt="{{$product->name}}">
+                    </a>
                 </div>
                 <div class="product-card-body">
                     <p class="product-brand">{{$product->brand}}</p>
@@ -55,7 +57,7 @@
             </div>
         </div>
         @empty
-            <h1>No product found for {{$category}}</h1>
+            <h1>No product found for {{$category->name}}</h1>
         @endforelse
     </div>  
     </div>

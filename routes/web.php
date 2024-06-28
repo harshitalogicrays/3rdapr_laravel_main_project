@@ -56,4 +56,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::controller(FrontendController::class)->group(function(){
     Route::get('/','index');
     Route::get('/categories/cproducts/{category?}','cproducts');
+    Route::get('/categories/viewproduct/{product}','viewproduct');
 });

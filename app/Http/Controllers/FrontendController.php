@@ -32,5 +32,13 @@ class FrontendController extends Controller
          }
       }
       }
+
+      public function viewproduct($product){
+             $product = Products::where('name',$product)->first();
+             if($product){
+               return view('frontend.viewproduct',compact('product'));
+               }
+               else {  return redirect()->back(); }
+      }
      
 }
