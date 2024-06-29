@@ -5,6 +5,7 @@ use App\Http\Middleware\AdminMiddleware;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 
@@ -57,4 +58,8 @@ Route::controller(FrontendController::class)->group(function(){
     Route::get('/','index');
     Route::get('/categories/cproducts/{category?}','cproducts');
     Route::get('/categories/viewproduct/{product}','viewproduct');
+});
+
+Route::middleware('auth')->group(function(){
+    Route::get('/cart',[CartController::class,'index']);
 });

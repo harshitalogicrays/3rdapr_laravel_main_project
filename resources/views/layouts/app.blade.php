@@ -18,6 +18,14 @@
 
     <link href="{{asset('exzoom/jquery.exzoom.css')}}" rel="stylesheet">
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/css/alertify.min.css"/>
+<!-- Default theme -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/css/themes/default.min.css"/>
+<!-- Semantic UI theme -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/css/themes/semantic.min.css"/>
+<!-- Bootstrap theme -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/css/themes/bootstrap.min.css"/>
+
    @livewireStyles
 </head>
 <body>
@@ -36,6 +44,16 @@
         <script src="{{asset('exzoom/jquery.exzoom.js')}}"></script>
    <script src="{{asset('js/bootstrap.js')}}"></script>
 
+   <script src="https://cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/alertify.min.js"></script>
    @stack('zoomscript')
+   <script>
+    document.addEventListener('livewire:init', () => {
+       Livewire.on('message', (event) => {
+        // console.log(event[0])
+        alertify.set('notifier','position', 'top-left');
+        alertify.notify(event[0].text, event[0].type, 2);
+       });
+    });
+   </script>
 </body>
 </html>

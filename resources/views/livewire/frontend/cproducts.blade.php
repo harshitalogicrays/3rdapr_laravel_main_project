@@ -22,7 +22,7 @@
                 <input type="radio" value="below1000" wire:model="priceInput" 
                 wire:click="filterData('below1000')"> >=100 and < 1000<br>
                 <input type="radio"  value="below2000" wire:model="priceInput"   wire:click="filterData('below2000')"> >=1000 and < 2000<br>
-                <input type="radio"  value="below3000" wire:model="priceInput"   wire:click="filterData('below3000')"> >=2000 and < 3000<br>
+                <input type="radio"  value="below3000" wire:model="priceInput"   wire:click="filterData('below3000')"> >=2000 and <= 3000<br>
         
             </div>
         </div>
