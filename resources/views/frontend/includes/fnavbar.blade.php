@@ -50,7 +50,7 @@
 
                    <li class="nav-item">
                         <a class="nav-link" href="{{url('/cart')}}"><i class="bi bi-cart" style="font-size: 25px"></i>
-                          <span class="badge rounded-pill text-bg-danger">0</span>           
+                          <span class="badge rounded-pill text-bg-danger"><livewire:frontend.cart-count/></span>           
                         </a>
                     </li>  
 

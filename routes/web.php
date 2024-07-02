@@ -62,4 +62,5 @@ Route::controller(FrontendController::class)->group(function(){
 
 Route::middleware('auth')->group(function(){
     Route::get('/cart',[CartController::class,'index']);
+    Route::get('/checkout-show',[CartController::class,'checkout']);
 });

@@ -33,7 +33,7 @@ class Viewproduct extends Component
                         'quantity'=>$this->qtyCount
                     ]);
                     session()->flash("success+_message","Item added to cart");
-
+                    $this->dispatch('cartAddedorUpdated');
                     $this->dispatch('message', ['text' =>"product added to cart", 'type'=>'success','status'=>200]);
                 }
                 else {

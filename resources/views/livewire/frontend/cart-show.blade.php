@@ -43,10 +43,12 @@
                          <div class="col-md-2 col-7 my-auto">
                              <div class="quantity">
                                  <div class="input-group">
-                                     <button >-</button>
+                                     <button wire:click="decreaseQty({{$c->id}})" 
+                                            wire:loading:attr="disabled">-</button>
                                      <input type="text"  value="{{$c->quantity}}"  readonly 
                                      class="input-quantity" style="width: 40px;text-align:center" />
-                                     <button>+</button>
+                                     <button wire:click="increaseQty({{$c->id}})" 
+                                        wire:loading:attr="disabled">+</button>
                                   </div>
                              </div>
                          </div>
@@ -58,7 +60,9 @@
                         </div>
                          <div class="col-md-2 col-5 my-auto">
                              <div class="remove">
-                                 <button class="btn btn-danger btn-sm">
+                                 <button class="btn btn-danger btn-sm" 
+                                 wire:click="removeFromCart({{$c->id}})" 
+                                 wire:loading:attr="disabled">
                                      <i class="bi bi-trash"></i> Remove
                                  </button>
                              </div>
@@ -78,7 +82,7 @@
           <div class="col-4">
                 <h5>Total:<span class="float-end">${{$totalPrice}}</span></h5><hr/>
                 <div class="d-grid gap-2">
-                   <a type="button"  class="btn btn-warning" >
+                   <a type="button"  class="btn btn-warning"  href="{{url('/checkout-show')}}">
                       Checkout
                     </a>
                 </div>
