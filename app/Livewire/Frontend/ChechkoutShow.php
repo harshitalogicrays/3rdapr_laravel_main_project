@@ -3,12 +3,18 @@
 namespace App\Livewire\Frontend;
 
 use App\Models\Cart;
+use App\Models\Orders;
 use Livewire\Component;
+use App\Models\OrderItems;
+use Illuminate\Support\Str;
 
 class ChechkoutShow extends Component
 {
     public $carts,$totalAmount;
     public $fullName,$email,$phone,$pincode,$address;
+    public $payment_mode=null,$payment_id=null;
+    protected $listeners=['validationForAll','transactionEmit'=>'paidOnlineOrder'];
+
     public function rules(){
         return [
             'fullName'=>'required|string',
@@ -23,8 +29,64 @@ class ChechkoutShow extends Component
         $this->email =  auth()->user()->email;
     }
 
-    public function codorder(){
+    public function placeorder(){
         $this->validate();
+       $orders =  Orders::create([
+            'user_id'=>auth()->user()->id,
+            'tracking_no'=>Str::random(10),
+            'fullname'=>$this->fullName,
+            'email'=>$this->email,
+            'phone'=>$this->phone,
+            'pincode'=>$this->pincode,
+            'address'=>$this->address,
+            'status_message'=>'in progress',
+            'payment_mode'=>$this->payment_mode,
+            'payment_id'=>$this->payment_id
+        ]);
+        foreach($this->carts as $cartItem){
+        $orderItems = OrderItems::create([
+            'order_id'=>$orders->id,
+            'product_id'=>$cartItem->product_id,
+            'quantity'=>$cartItem->quantity,
+            'price'=>$cartItem->product->selling_price
+        ]);
+        }
+        return $orders;
+    }
+
+
+    public function validationForAll(){
+        $this->validate();
+    }
+    public function codorder(){
+        $this->payment_mode="cash on delivery";
+        $codorder = $this->placeorder();
+        if($codorder){
+            $this->dispatch('message', ['text' =>"order placed", 'type'=>'success','status'=>200]);   
+            Cart::where('user_id',auth()->user()->id)->delete();
+            $this->dispatch('cartAddedorUpdated');
+            return redirect('/thank-you');
+        }
+        else {
+            $this->dispatch('message', ['text' =>"something went wrong", 'type'=>'error','status'=>400]);
+     
+        }
+    }
+
+    public function paidOnlineOrder($id){
+        $this->payment_mode="online";
+         $this->payment_id=$id;
+        $onlineorder = $this->placeorder();
+        if($onlineorder){
+            $this->dispatch('message', ['text' =>"order placed", 'type'=>'success','status'=>200]);   
+            Cart::where('user_id',auth()->user()->id)->delete();
+            $this->dispatch('cartAddedorUpdated');
+            return redirect('/thank-you');
+        }
+        else {
+            $this->dispatch('message', ['text' =>"something went wrong", 'type'=>'error','status'=>400]);
+     
+        }
     }
 
     public function totalCartAmount(){

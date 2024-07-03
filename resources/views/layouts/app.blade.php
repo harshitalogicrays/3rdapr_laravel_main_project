@@ -46,6 +46,7 @@
 
    <script src="https://cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/alertify.min.js"></script>
    @stack('zoomscript')
+   @stack('paypalscript')
    <script>
     document.addEventListener('livewire:init', () => {
        Livewire.on('message', (event) => {

@@ -13,4 +13,6 @@ class CartController extends Controller
     public function checkout(){
         return view('frontend.checkout-show');
     }
+    public function thankyou(){
+        return view('frontend.thank-you');    }
 }
