@@ -100,17 +100,17 @@
 <script>
     paypal.Buttons({
         // onClick()  {
-        //     if (document.getElementById('fullname').value==''
+        //     if (document.getElementById('fullName').value==''
         //         || document.getElementById('email').value==''
         //         || document.getElementById('phone').value==''
         //         || document.getElementById('pincode').value==''
         //         || document.getElementById('address').value==''
         //     ) {
-        //         Livewire.dispatch('validationForAll');
-        //         return false;
+        //         Livewire.dispatch('validationForAll');              
+        //         return false;              
         //     }
         //     else{
-        //         @this.set('fullname',document.getElementById('fullname').value);
+        //         @this.set('fullName',document.getElementById('fullName').value);
         //         @this.set('email',document.getElementById('email').value);
         //         @this.set('phone',document.getElementById('phone').value);
         //         @this.set('pincode',document.getElementById('pincode').value);
@@ -142,5 +142,5 @@ return actions.order.capture().then(function(orderData) {
 });
 },
     }).render('#paypal-button-container');
-  </script>
-@endpush
+</script>
+@endpush 

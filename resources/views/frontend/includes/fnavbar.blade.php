@@ -62,9 +62,9 @@
                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="{{ url('/') }}">  <i class="bi bi-person-circle"></i>Profile</a>
                         <hr class="dropdown-divider">
-                        <a class="dropdown-item" href="{{ url('/') }}">  <i class="bi bi-cart"></i>My Cart</a>
+                        <a class="dropdown-item" href="{{ url('/cart') }}">  <i class="bi bi-cart"></i>My Cart</a>
                         <hr class="dropdown-divider">
-                        <a class="dropdown-item" href="{{ url('/') }}">  <i class="bi bi-list"></i>My Orders</a>
+                        <a class="dropdown-item" href="{{ url('/myorders') }}">  <i class="bi bi-list"></i>My Orders</a>
                         <hr class="dropdown-divider">
                         <a class="dropdown-item" href="{{ route('logout') }}"
                            onclick="event.preventDefault();

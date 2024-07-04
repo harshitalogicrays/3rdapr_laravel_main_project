@@ -38,12 +38,12 @@
           <span class="menu-title">Sliders</span>
         </a>
       </li>
-      {{-- <li class="nav-item">
-        <a class="nav-link" href="pages/charts/chartjs.html">
+      <li class="nav-item">
+        <a class="nav-link" href="{{url('/admin/orders')}}">
           <i class="mdi mdi-chart-pie menu-icon"></i>
-          <span class="menu-title">Charts</span>
+          <span class="menu-title">Orders</span>
         </a>
-      </li> --}}
+      </li>
       {{-- <li class="nav-item">
         <a class="nav-link" href="pages/tables/basic-table.html">
           <i class="mdi mdi-grid-large menu-icon"></i>

@@ -3,10 +3,12 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\AdminMiddleware;
 use App\Http\Controllers\FrontendController;
+use App\Http\Controllers\Admin\AOrderController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\frontend\OrderController;
 use App\Http\Controllers\Admin\DashboardController;
 
 // Route::get('/', function () {
@@ -47,8 +49,11 @@ Route::prefix('/admin')->middleware(AdminMiddleware::class,'auth')->group(functi
         Route::get('view','index');
         Route::get('create','create');
         Route::post('add','add')->name('store');
-    });
+    });   
 });
+Route::get('/orders',[AOrderController::class,'index']);
+Route::get('/orders/view/{id}',[AOrderController::class,'vieworder']);
+Route::put('/order/update/{id}',[AOrderController::class,'updatestatus']);
 });
 
 
@@ -64,4 +69,6 @@ Route::middleware('auth')->group(function(){
     Route::get('/cart',[CartController::class,'index']);
     Route::get('/checkout-show',[CartController::class,'checkout']);
     Route::get('/thank-you',[CartController::class,'thankyou']);
+    Route::get('/myorders',[OrderController::class,'index']);
+    Route::get('/myorders/view/{id}',[OrderController::class,'vieworder']);
 });
