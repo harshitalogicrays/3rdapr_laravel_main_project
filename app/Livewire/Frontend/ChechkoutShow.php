@@ -11,13 +11,13 @@ use Illuminate\Support\Str;
 class ChechkoutShow extends Component
 {
     public $carts,$totalAmount;
-    public $fullName,$email,$phone,$pincode,$address;
+    public $fullname,$email,$phone,$pincode,$address;
     public $payment_mode=null,$payment_id=null;
     protected $listeners=['validationForAll','transactionEmit'=>'paidOnlineOrder'];
 
     public function rules(){
         return [
-            'fullName'=>'required|string',
+            'fullname'=>'required|string',
             'email'=>'required',
             'phone'=>'required|string|min:10|max:10',
             'pincode'=>'required|string|min:6|max:6',
@@ -25,7 +25,7 @@ class ChechkoutShow extends Component
         ];
     }
     public function mount(){
-        $this->fullName=auth()->user()->name;
+        $this->fullname=auth()->user()->name;
         $this->email =  auth()->user()->email;
     }
 
@@ -34,7 +34,7 @@ class ChechkoutShow extends Component
        $orders =  Orders::create([
             'user_id'=>auth()->user()->id,
             'tracking_no'=>Str::random(10),
-            'fullname'=>$this->fullName,
+            'fullname'=>$this->fullname,
             'email'=>$this->email,
             'phone'=>$this->phone,
             'pincode'=>$this->pincode,

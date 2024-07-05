@@ -4,7 +4,10 @@
     <div class="card">
         <div class="card-body shadow p-4 bg-white">
             <h1><i class="bi bi-cart-fill"></i> Order Details
-                <a name="" id="" class="btn btn-danger float-end" href="{{url('/admin/orders')}}" role="button">Back</a>
+                <a name="" id="" class="btn btn-danger float-end me-2" href="{{url('/admin/orders')}}" role="button">Back</a>
+                <a name="" id="" class="btn btn-warning float-end me-2" href="{{url('/admin/orders/invoice/view/'.$order->id)}}" role="button">View Invoice</a>
+                <a name="" id="" class="btn btn-info float-end me-2" href="{{url('/admin/orders/invoice/download/'.$order->id)}}" role="button">Download Invoice</a>
+                <a name="" id="" class="btn btn-primary float-end me-2" href="{{url('/admin/orders/invoice/mail/'.$order->id)}}" role="button">Send Mail</a>
             </h1>
                 <hr/>
         <div class="row shadow">
@@ -27,7 +30,7 @@
                 <p>Pincode : {{$order->pincode}}</p>
                 @if ($order->status_message !='delivered')
                     <div class="card-body">
-                    <form method="post" action="{{url('/admin/order/update/'.$order->id)}}">
+                    <form method="post" action="{{url('/admin/orders/update/'.$order->id)}}">
                     @csrf
                     @method('PUT')
                     <div class="mb-3"   >

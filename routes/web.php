@@ -51,9 +51,18 @@ Route::prefix('/admin')->middleware(AdminMiddleware::class,'auth')->group(functi
         Route::post('add','add')->name('store');
     });   
 });
-Route::get('/orders',[AOrderController::class,'index']);
-Route::get('/orders/view/{id}',[AOrderController::class,'vieworder']);
-Route::put('/order/update/{id}',[AOrderController::class,'updatestatus']);
+Route::controller(AOrderController::class)->group(function(){
+    Route::prefix('orders')->group(function(){
+        Route::get('/','index');
+        Route::get('/view/{id}','vieworder');
+        Route::put('/update/{id}','updatestatus');
+        Route::get('/invoice/view/{id}','viewinvoice');
+        Route::get('/invoice/download/{id}','downloadinvoice');
+        Route::get('/invoice/mail/{id}','sendinvoice');
+});   
+});
+
+
 });
 
 
