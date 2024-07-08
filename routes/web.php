@@ -72,6 +72,8 @@ Route::controller(FrontendController::class)->group(function(){
     Route::get('/','index');
     Route::get('/categories/cproducts/{category?}','cproducts');
     Route::get('/categories/viewproduct/{product}','viewproduct');
+    Route::get('/search','searchproduct');
+
 });
 
 Route::middleware('auth')->group(function(){
@@ -80,4 +82,8 @@ Route::middleware('auth')->group(function(){
     Route::get('/thank-you',[CartController::class,'thankyou']);
     Route::get('/myorders',[OrderController::class,'index']);
     Route::get('/myorders/view/{id}',[OrderController::class,'vieworder']);
+    Route::get('/profile',[FrontendController::class,'profile']);
+    Route::post('/saveprofile',[FrontendController::class,'saveprofile']);
+    Route::get('changepassword',[FrontendController::class,'changepassword']);
+    Route::post('changepassword',[FrontendController::class,'updatepassword']);
 });

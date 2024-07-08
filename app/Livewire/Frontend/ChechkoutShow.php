@@ -27,6 +27,9 @@ class ChechkoutShow extends Component
     public function mount(){
         $this->fullname=auth()->user()->name;
         $this->email =  auth()->user()->email;
+        $this->phone=auth()->user()->userDetail->phone ?? '';
+        $this->pincode=auth()->user()->userDetail->pincode ?? '';
+        $this->address=auth()->user()->userDetail->address ?? '';
     }
 
     public function placeorder(){

@@ -7,7 +7,7 @@
       <div class="collapse navbar-collapse" id="navbarScroll">
         <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
+            <a class="nav-link active" aria-current="page" href="{{url('/')}}">Home</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" aria-current="page" href="#">About</a>
@@ -25,9 +25,10 @@
             </ul>
             </li>
         </ul>
-        <form class="d-flex" role="search">
+        <form class="d-flex" role="search" action="{{url('/search')}}">
             <div class="input-group">
-                <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                <input class="form-control" type="search" name="search" placeholder="Search" 
+                value="{{Request::get('search')}}">
                 <button class="btn btn-danger" type="submit"><i class="bi bi-search"></i> </button>
             </div>       
         </form>
@@ -60,7 +61,7 @@
                     </a>
 
                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{{ url('/') }}">  <i class="bi bi-person-circle"></i>Profile</a>
+                        <a class="dropdown-item" href="{{ url('/profile') }}">  <i class="bi bi-person-circle"></i>Profile</a>
                         <hr class="dropdown-divider">
                         <a class="dropdown-item" href="{{ url('/cart') }}">  <i class="bi bi-cart"></i>My Cart</a>
                         <hr class="dropdown-divider">
